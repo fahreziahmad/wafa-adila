@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HBD Bang Koding Dari Micola</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+  </head>
+  <body
+    style="
+      background-image: url(https://images.unsplash.com/photo-1530273973427-22351773250c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    "
+    class="flex justify-center h-screen items-center"
+  >
+
+
+  </script>
+    
+    <div
+      class="bg-white border px-10 py-8 border-4 border-gray-300 shadow-lg shadow-blue-300 rounded-xl text-center animate__animated animate__backInDown m-8 w-80"
+      id="kartu"
+    >
+      <h1 class="text-3xl">Happy Birthday</h1>
+      <h1
+        class="text-2xl text-blue-500 font-bold animate__animated animate__pulse animate__infinite"
+      >
+      <img
+        src="image1.jpg"
+        alt="Image1"
+        class="mx-auto my-4 rounded-xl shadow-lg"
+        />
+        Nur Wafa Adila
+      </h1>
+      <button
+        class="p-2 bg-blue-600 text-white rounded mt-5 hover:bg-blue-900 transition ease-in w-full animate__animated animate__delay-1s animate__tada"
+        onclick="ubahKartu()"
+      >
+        Klik Disini Cantik!
+      </button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+    <script>
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+      });
+      let kartu = document.getElementById("kartu");
+      function ubahKartu() {
+        kartu.innerHTML = `    <h1 class="font-semibold text-wrap animate__animated animate__zoomIn">
+      Di bawah langit yang menua perlahan,
+Hari ini lahirlah kamu—anugerah dari Tuhan.
+Senyummu, teduh matamu,
+Adalah alasan semesta membuatku jatuh setiap waktu.
+Selamat ulang tahun, belahan jiwaku,
+Di setiap hela napas, ada doa yang kuiringkan untukmu.
+Semoga hidupmu senantiasa dilimpahi berkah,
+Dengan cinta, rezeki, dan langkah yang penuh arah.
+Kuharap Allah menjaga setiap detak jantungmu,
+Memberi kekuatan di tiap lelah yang kau temu.
+Dan semoga aku—dengan segala kurangku,
+Dapat menjadi tempat pulang yang kamu mau. 🎉🎂
+    </h1>
+    <img
+        src="image2.jpg"
+        alt="Image2"
+        class="mx-auto my-4 rounded-xl shadow-lg"
+        />
+    
+    <button
+      class="p-2 bg-slate-600 text-white rounded mt-5 hover:bg-slate-900 transition ease-in w-full animate__animated animate__delay-1s animate__tada"
+      onclick="refresh()"
+    >
+      Tutup
+    </button>
+    `;
+      }
+      function refresh() {
+        location.reload();
+      }
+    </script>
+  </body>
+</html>
