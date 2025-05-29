@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selamat Ulang Tahun, Sayang!</title>
+    <title>Selamat Ulang Tahun, Sayangnya abang cantiknya abang!</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
@@ -48,9 +48,66 @@
             width: 24px;
             height: 24px;
         }
-        /* Styling untuk bagian kartu pesan agar smooth scroll */
         html {
             scroll-behavior: smooth;
+        }
+        .gift-box {
+            background-color: white;
+            border-radius: 0.75rem; /* rounded-xl */
+            padding: 1.5rem; /* p-6 */
+            text-align: center;
+            border: 2px dashed #d8b4fe; /* border-purple-300 */
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gift-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .gift-box img {
+            width: 80px;
+            margin-bottom: 0.75rem; /* mb-3 */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .revealed-gift-card {
+            background-color: white;
+            border-radius: 0.75rem; /* rounded-xl */
+            padding: 2rem; /* p-8 */
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin-top: 2rem; /* mt-8 */
+            animation: fadeInUp 0.5s ease-out; /* Menggunakan animasi yang sama */
+        }
+        .revealed-gift-card img.content-image {
+            max-width: 100%;
+            height: auto;
+            max-height: 300px; /* Batasi tinggi gambar agar tidak terlalu besar */
+            border-radius: 0.5rem; /* rounded-lg */
+            margin: 1rem auto; /* my-4 */
+            display: block;
+        }
+        .revealed-gift-card iframe {
+            width: 100%;
+            max-width: 560px; /* Standard YouTube embed width */
+            height: 315px; /* Standard YouTube embed height */
+            margin: 1rem auto; /* my-4 */
+            border-radius: 0.5rem;
+            border: none;
+        }
+        .back-button {
+            display: inline-block;
+            margin-top: 1.5rem; /* mt-6 */
+            padding: 0.75rem 1.5rem; /* py-3 px-6 */
+            background-color: #ec4899; /* pink-500 */
+            color: white;
+            font-weight: bold;
+            border-radius: 9999px; /* rounded-full */
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+        .back-button:hover {
+            background-color: #db2777; /* pink-600 */
         }
     </style>
 </head>
@@ -78,8 +135,8 @@
     </header>
 
     <section id="ucapan-interaktif" class="overflow-hidden">
-        <div class="min-h-screen bg-pink-300 flex flex-col items-center justify-center p-6 text-center relative">
-            <img src="https://i.ibb.co/1nvWk0F/bears-cake-cute.png" alt="Selamat Ulang Tahun Special" class="w-52 sm:w-64 md:w-72 mb-8 rounded-xl shadow-2xl animate__animated animate__fadeInDown">
+        <div class="min-h-screen bg-pink-600 flex flex-col items-center justify-center p-6 text-center relative">
+            <img src="3.jpg" alt="Selamat Ulang Tahun Special" class="w-52 sm:w-64 md:w-72 mb-8 rounded-xl shadow-2xl animate__animated animate__fadeInDown">
             <div class="absolute bottom-12 md:bottom-16 left-1/2 transform -translate-x-1/2 w-full px-4">
                 <a href="#ucapan-kartu-mulai" class="inline-block bg-white text-pink-600 font-bold py-3 px-8 rounded-full shadow-xl hover:bg-pink-50 transition-colors duration-300 text-md sm:text-lg animate__animated animate__pulse animate__infinite animate__delay-1s">
                     Scroll ke bawah ya! 👇
@@ -119,7 +176,7 @@
                         <br><br>
                         Terima kasih sudah jadi bagian penting di hidup aku.
                         <br>
-                        <strong class="font-cursive text-xl text-pink-600 block mt-3">Love, [Nama Kamu]</strong>
+                        <strong class="font-cursive text-xl text-pink-600 block mt-3">Love, [Nur Wafa Adila]</strong>
                     </p>
                 </div>
             </div>
@@ -142,7 +199,7 @@
                     </div>
                 </div>
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-xl">
-                    <img src="image3.jpg" alt="Kenangan 3" class="w-full h-64 object-cover">
+                    <img src="4.jpg" alt="Kenangan 3" class="w-full h-64 object-cover">
                     <div class="p-4">
                         <p class="text-gray-600 text-sm text-center">Petualangan tak terlupakan...</p>
                     </div>
@@ -150,9 +207,71 @@
             </div>
         </section>
 
+        <section id="gift-selection-section" class="my-12 animate__animated animate__fadeInUp animate__delay-2s">
+            <h3 class="text-2xl md:text-3xl font-semibold text-gray-700 mb-6 text-center">Aku punya sesuatu buat kamu</h3>
+            <p class="text-lg text-gray-500 mb-10 text-center">Pilih salah satu ya >&lt;</p>
+            <div class="max-w-2xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 px-4">
+                <div class="gift-box" onclick="pilihKado(1)">
+                    <img src="https://i.ibb.co/Rhp7G0V/gift-icon-1.png" alt="Kado 1">
+                    <span class="text-lg font-semibold text-pink-600">1</span>
+                </div>
+                <div class="gift-box" onclick="pilihKado(2)">
+                    <img src="https://i.ibb.co/Rhp7G0V/gift-icon-1.png" alt="Kado 2">
+                    <span class="text-lg font-semibold text-pink-600">2</span>
+                </div>
+                <div class="gift-box" onclick="pilihKado(3)">
+                    <img src="https://i.ibb.co/Rhp7G0V/gift-icon-1.png" alt="Kado 3">
+                    <span class="text-lg font-semibold text-pink-600">3</span>
+                </div>
+                <div class="gift-box" onclick="pilihKado(4)">
+                    <img src="https://i.ibb.co/Rhp7G0V/gift-icon-1.png" alt="Kado 4">
+                    <span class="text-lg font-semibold text-pink-600">4</span>
+                </div>
+            </div>
+        </section>
+        <section id="revealed-gift-section" class="my-12 max-w-2xl mx-auto px-4" style="display:none;">
+            <div id="gift-content-1" class="revealed-gift-card" style="display:none;">
+                <h4 class="text-2xl font-bold text-pink-600 mb-4 font-cursive">Kejutan Spesial Untukmu!</h4>
+                <p class="text-lg text-gray-700 mb-4">
+                    Selamat ulang tahun sekali lagi, Sayang! Ini adalah pesan dari hatiku yang paling dalam. 
+                    Semoga hari ini kamu dipenuhi dengan tawa, cinta, dan semua hal yang membuatmu bahagia. 
+                    Aku sangat beruntung memilikimu. ❤️
+                </p>
+                <p class="text-md text-gray-500">Klik tombol kembali untuk melihat kejutan lainnya atau tutup halaman ini dengan senyuman!</p>
+                <button class="back-button" onclick="kembaliPilihKado()">Pilih Kado Lain</button>
+            </div>
+
+            <div id="gift-content-2" class="revealed-gift-card" style="display:none;">
+                <h4 class="text-2xl font-bold text-pink-600 mb-4 font-cursive">Sebuah Gambar Bernilai Seribu Kata...</h4>
+                <img src="https://picsum.photos/seed/loveletters/600/400" alt="Gambar Kenangan Spesial" class="content-image shadow-lg"> 
+                <p class="text-lg text-gray-700 mt-4">Semoga gambar ini bisa sedikit mewakili betapa spesialnya dirimu bagiku.</p>
+                <button class="back-button" onclick="kembaliPilihKado()">Pilih Kado Lain</button>
+            </div>
+
+            <div id="gift-content-3" class="revealed-gift-card" style="display:none;">
+                <h4 class="text-2xl font-bold text-pink-600 mb-4 font-cursive">Sebuah Lagu Untukmu...</h4>
+                <p class="text-lg text-gray-700 mb-4">Putar lagu ini dan rasakan semua doa baikku untukmu hari ini!</p>
+                <iframe id="youtube-player-3" src="" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <button class="back-button" onclick="kembaliPilihKado()">Pilih Kado Lain</button>
+            </div>
+
+            <div id="gift-content-4" class="revealed-gift-card" style="display:none;">
+                <h4 class="text-2xl font-bold text-pink-600 mb-4 font-cursive">Sedikit Puisi Untukmu...</h4>
+                <p class="text-lg text-gray-700 mb-2 italic">
+                    Di hari bahagiamu ini,<br>
+                    Kutitipkan sejuta doa,<br>
+                    Agar langkahmu selalu diberkahi,<br>
+                    Dan senyummu tak pernah sirna.
+                </p>
+                <p class="text-lg text-gray-700 mt-4">
+                    Kamu adalah bintang yang menerangi hariku. Selamat ulang tahun, cintaku!
+                </p>
+                <button class="back-button" onclick="kembaliPilihKado()">Pilih Kado Lain</button>
+            </div>
+        </section>
         <section class="text-center bg-white shadow-xl rounded-lg p-8 md:p-12 transform transition duration-500 hover:scale-105 animate__animated animate__fadeInUp animate__delay-3s">
             <h2 class="text-2xl md:text-3xl font-semibold text-pink-600 mb-4">Dengan Segenap Cinta,</h2>
-            <p class="text-xl text-gray-700">[Nama Kamu]</p>
+            <p class="text-xl text-gray-700">[Nur Wafa Adila]</p>
             <div class="mt-6">
                 <svg class="w-12 h-12 text-pink-500 mx-auto animate-bounce" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path></svg>
             </div>
@@ -160,7 +279,7 @@
     </main>
 
     <footer class="bg-pink-700 text-white text-center p-6 mt-12">
-        <p>&copy; <span id="year"></span> Dibuat dengan ❤️ untuk [Nama Pacar Kamu].</p>
+        <p>&copy; <span id="year"></span> Dibuat dengan ❤️ untuk [Nur Wafa Adila].</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
@@ -201,14 +320,13 @@
                 gravity: 0,
                 decay: 0.95,
                 startVelocity: 25,
-                shapes: ['star', 'circle', 'heart'], // Menambahkan bentuk hati
-                colors: ['#FFC0CB', '#FF69B4', '#FF1493', '#DB7093', '#C71585', '#FFFFFF'] // Tema pink & putih
+                shapes: ['star', 'circle', 'heart'],
+                colors: ['#FFC0CB', '#FF69B4', '#FF1493', '#DB7093', '#C71585', '#FFFFFF']
             };
 
             function shoot() {
-                confetti({ ...defaults, particleCount: 50, scalar: 1.2, shapes: ['star'] });
-                confetti({ ...defaults, particleCount: 20, scalar: 0.8, shapes: ['circle'] });
-                confetti({ ...defaults, particleCount: 20, scalar: 1.0, shapes: ['heart'], colors:['#FF1493', '#FF69B4']}); // Confetti hati
+                confetti({ ...defaults, particleCount: 60, scalar: 1.2, shapes: ['star', 'heart'] });
+                confetti({ ...defaults, particleCount: 30, scalar: 0.8, shapes: ['circle'] });
             }
             setTimeout(shoot, 0);
             setTimeout(shoot, 150);
@@ -217,14 +335,63 @@
 
         window.addEventListener('load', () => {
             triggerConfetti();
-            // Untuk interaksi pertama agar audio bisa play di beberapa browser
-            // bisa juga tambahkan event listener 'click' atau 'scroll' sekali pada body
-            // document.body.addEventListener('click', () => {
-            //     if (!musikSudahInteraksi) {
-            //          tombolMusik.click(); // simulasi klik tombol musik
-            //     }
-            // }, { once: true });
         });
+
+        const giftSelectionSection = document.getElementById('gift-selection-section');
+        const revealedGiftSection = document.getElementById('revealed-gift-section');
+        const giftContents = {
+            1: document.getElementById('gift-content-1'),
+            2: document.getElementById('gift-content-2'),
+            3: document.getElementById('gift-content-3'),
+            4: document.getElementById('gift-content-4')
+        };
+        const youtubePlayer3 = document.getElementById('youtube-player-3');
+
+        // URL Video YouTube (Ganti ID video jika perlu)
+        // Video Cocomelon: http://www.youtube.com/watch?v=ho08YLYDM88 -> ID nya adalah '1', tapi kita butuh ID video asli.
+        // Karena saya tidak bisa mendapatkan ID video asli dari URL googleusercontent, saya akan menggunakan ID video dari hasil search sebelumnya yaitu 'M3B00H9K64s' (CoComelon) atau Anda bisa menggantinya.
+        // URL embed YouTube: https://www.youtube.com/embed/VIDEO_ID
+        const youtubeVideoURLs = {
+             3: "https://www.youtube.com/embed/M3B00H9K64s" // Contoh: CoComelon - Happy Birthday Song
+        };
+
+
+        function pilihKado(nomorKado) {
+            // Sembunyikan semua konten kado terlebih dahulu
+            for (const key in giftContents) {
+                giftContents[key].style.display = 'none';
+            }
+
+            // Tampilkan konten kado yang dipilih
+            if (giftContents[nomorKado]) {
+                giftContents[nomorKado].style.display = 'block';
+                
+                // Jika kado adalah video YouTube, set src player
+                if (nomorKado === 3 && youtubePlayer3 && youtubeVideoURLs[3]) {
+                    youtubePlayer3.src = youtubeVideoURLs[3];
+                }
+
+                giftSelectionSection.style.display = 'none'; // Sembunyikan pilihan kado
+                revealedGiftSection.style.display = 'block'; // Tampilkan bagian konten kado
+                triggerConfetti(); // Tampilkan confetti saat kado dibuka
+                window.scrollTo({ top: revealedGiftSection.offsetTop - 20, behavior: 'smooth' }); // Scroll ke konten kado
+            }
+        }
+
+        function kembaliPilihKado() {
+            // Sembunyikan semua konten kado
+            for (const key in giftContents) {
+                giftContents[key].style.display = 'none';
+            }
+             // Hentikan pemutaran video YouTube jika ada
+            if (youtubePlayer3) {
+                youtubePlayer3.src = ""; // Mengosongkan src akan menghentikan video
+            }
+
+            revealedGiftSection.style.display = 'none'; // Sembunyikan bagian konten kado
+            giftSelectionSection.style.display = 'block'; // Tampilkan kembali pilihan kado
+            window.scrollTo({ top: giftSelectionSection.offsetTop - 20, behavior: 'smooth' }); // Scroll kembali ke pilihan kado
+        }
     </script>
 </body>
 </html>
