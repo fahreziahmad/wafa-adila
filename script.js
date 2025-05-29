@@ -1,6 +1,9 @@
-document.addEventListener('DOMContentLoaded', () => { // Pastikan DOM siap sebelum menjalankan skrip
+document.addEventListener('DOMContentLoaded', () => { // Ensure DOM is ready before running script
 
-    document.getElementById('year').textContent = new Date().getFullYear();
+    const yearElement = document.getElementById('year');
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
 
     const lagu = document.getElementById('laguUlangTahun');
     const tombolMusik = document.getElementById('tombolPutarMusik');
@@ -8,9 +11,8 @@ document.addEventListener('DOMContentLoaded', () => { // Pastikan DOM siap sebel
     const ikonPause = document.getElementById('ikonPause');
     let musikSudahInteraksi = false;
 
-    if (tombolMusik) { // Pastikan elemen ada
+    if (tombolMusik && lagu && ikonPlay && ikonPause) { // Check if all music elements exist
         tombolMusik.addEventListener('click', () => {
-            if (!lagu) return; // Pastikan elemen lagu ada
             if (!musikSudahInteraksi) {
                 lagu.play().catch(error => console.error("Audio play failed:", error));
                 musikSudahInteraksi = true;
@@ -20,22 +22,22 @@ document.addEventListener('DOMContentLoaded', () => { // Pastikan DOM siap sebel
                 lagu.pause();
             }
         });
-    }
 
-    if (lagu) { // Pastikan elemen ada
         lagu.onplay = () => {
-            if (ikonPlay) ikonPlay.style.display = 'none';
-            if (ikonPause) ikonPause.style.display = 'block';
+            ikonPlay.style.display = 'none';
+            ikonPause.style.display = 'block';
         };
 
         lagu.onpause = () => {
-            if (ikonPlay) ikonPlay.style.display = 'block';
-            if (ikonPause) ikonPause.style.display = 'none';
+            ikonPlay.style.display = 'block';
+            ikonPause.style.display = 'none';
         };
+    } else {
+        console.warn("Music player elements not found.");
     }
     
     const triggerConfetti = () => {
-        if (typeof confetti !== 'undefined') { // Pastikan fungsi confetti ada
+        if (typeof confetti === 'function') { // Check if confetti function is available
             const defaults = {
                 spread: 360,
                 ticks: 70,
@@ -54,15 +56,11 @@ document.addEventListener('DOMContentLoaded', () => { // Pastikan DOM siap sebel
             setTimeout(shoot, 150);
             setTimeout(shoot, 300);
         } else {
-            console.warn("Confetti function is not defined. Make sure the confetti script is loaded.");
+            console.warn("Confetti function is not defined. Make sure the confetti script is loaded before this script or is globally available.");
         }
     };
 
-    // Panggil confetti setelah DOM dimuat, bukan window.load jika confetti script di defer/async
-    // Namun, karena confetti script Anda mungkin tidak di defer, window.load lebih aman
-    // Jika confetti script juga di defer, DOMContentLoaded sudah cukup.
-    // Untuk amannya, karena confetti bisa jadi belum siap saat DOMContentLoaded,
-    // kita biarkan triggerConfetti dipanggil dari window.load atau DOMContentLoaded jika confetti sudah ada.
+    // Call confetti on initial load (after DOM is ready)
     triggerConfetti();
 
 
@@ -76,57 +74,62 @@ document.addEventListener('DOMContentLoaded', () => { // Pastikan DOM siap sebel
     };
     const youtubePlayer3 = document.getElementById('youtube-player-3');
 
-    // GANTI 'VIDEO_ID_ANDA' dengan ID Video YouTube yang ingin Anda gunakan.
-    // Contoh ID Video untuk "Happy Birthday Song": YOcgY2eT7zE (bisa diganti)
+    // PENTING: GANTI 'VIDEO_ID_ANDA' dengan ID Video YouTube yang valid.
+    // Contoh: Jika URL video adalah https://www.youtube.com/watch?v=XYZ123, maka ID videonya adalah 'XYZ123'.
     const youtubeVideoURLs = {
-         3: "https://www.youtube.com/playlist?list=PL70caGBXiq75-2hkNGUG5ZsK8GDJdhPRI" // << GANTI VIDEO_ID_ANDA DI SINI
+         3: "https://www.youtube.com/embed/VIDEO_ID_ANDA" // << GANTI VIDEO_ID_ANDA DI SINI
     };
 
 
-    window.pilihKado = function(nomorKado) { // Membuat fungsi global agar bisa dipanggil dari HTML onclick
-        // Sembunyikan semua konten kado terlebih dahulu
+    // Make functions global so they can be called from HTML onclick attributes
+    window.pilihKado = function(nomorKado) {
+        // Hide all gift contents first
         for (const key in giftContents) {
-            if (giftContents[key]) { // Pastikan elemen ada
+            if (giftContents[key]) {
                 giftContents[key].style.display = 'none';
             }
         }
 
-        // Tampilkan konten kado yang dipilih
+        // Show the selected gift content
         if (giftContents[nomorKado]) {
             giftContents[nomorKado].style.display = 'block';
             
-            // Jika kado adalah video YouTube, set src player
+            // If the gift is a YouTube video, set the player source
             if (nomorKado === 3 && youtubePlayer3 && youtubeVideoURLs[3]) {
                 if (youtubeVideoURLs[3].includes("VIDEO_ID_ANDA")) {
+                    // Notify user if the video ID is still a placeholder
                     const pInfo = document.createElement('p');
-                    pInfo.textContent = 'Mohon ganti VIDEO_ID_ANDA di file script.js dengan ID video YouTube yang valid.';
-                    pInfo.className = 'text-red-500 text-sm mt-2';
+                    pInfo.textContent = 'PENTING: Mohon ganti VIDEO_ID_ANDA di file script.js dengan ID video YouTube yang valid agar video bisa diputar.';
+                    pInfo.className = 'text-red-500 text-sm mt-2 font-semibold';
+                    
                     const oldPInfo = giftContents[nomorKado].querySelector('.text-red-500');
-                    if(oldPInfo) oldPInfo.remove();
+                    if(oldPInfo) oldPInfo.remove(); // Remove old message if exists
+                    
                     giftContents[nomorKado].insertBefore(pInfo, youtubePlayer3.nextSibling);
-                     youtubePlayer3.src = ""; 
+                    youtubePlayer3.src = ""; // Do not play if it's a placeholder ID
                 } else {
+                    // Remove placeholder warning if it was there
                     const oldPInfo = giftContents[nomorKado].querySelector('.text-red-500');
                     if(oldPInfo) oldPInfo.remove();
-                    youtubePlayer3.src = youtubeVideoURLs[3] + "?autoplay=1&rel=0"; // Tambahkan autoplay dan rel=0 (opsional)
+                    youtubePlayer3.src = youtubeVideoURLs[3] + "?autoplay=1&rel=0"; // Add autoplay and rel=0 (optional, to not show related videos)
                 }
             }
 
-            if (giftSelectionSection) giftSelectionSection.style.display = 'none';
-            if (revealedGiftSection) revealedGiftSection.style.display = 'block';
-            triggerConfetti(); 
-            if (revealedGiftSection) window.scrollTo({ top: revealedGiftSection.offsetTop - 20, behavior: 'smooth' });
+            if (giftSelectionSection) giftSelectionSection.style.display = 'none'; // Hide gift selection
+            if (revealedGiftSection) revealedGiftSection.style.display = 'block'; // Show revealed gift area
+            triggerConfetti(); // Trigger confetti when a gift is opened
+            if (revealedGiftSection) window.scrollTo({ top: revealedGiftSection.offsetTop - 20, behavior: 'smooth' }); // Scroll to the revealed gift
         }
     }
 
-    window.kembaliPilihKado = function() { // Membuat fungsi global
+    window.kembaliPilihKado = function() {
         for (const key in giftContents) {
-            if (giftContents[key]) { // Pastikan elemen ada
+            if (giftContents[key]) {
                 giftContents[key].style.display = 'none';
             }
         }
         if (youtubePlayer3) {
-            youtubePlayer3.src = ""; 
+            youtubePlayer3.src = ""; // Stop YouTube video by clearing src
         }
 
         if (revealedGiftSection) revealedGiftSection.style.display = 'none'; 
@@ -134,11 +137,11 @@ document.addEventListener('DOMContentLoaded', () => { // Pastikan DOM siap sebel
         if (giftSelectionSection) window.scrollTo({ top: giftSelectionSection.offsetTop - 20, behavior: 'smooth' }); 
     }
 
-}); // Akhir dari event listener DOMContentLoaded
+}); // End of DOMContentLoaded listener
 
-// Event listener untuk window.load bisa tetap ada jika ada fungsi yang bergantung pada semua aset (gambar dll) termuat
-window.addEventListener('load', () => {
-    if (typeof triggerConfetti === 'function') { // Pastikan triggerConfetti ada sebelum dipanggil
-        triggerConfetti(); // Panggil lagi untuk memastikan confetti muncul jika ada race condition dengan DOMContentLoaded
-    }
-});
+// Optional: Call confetti again on window.load if you want to ensure it fires after all assets
+// window.addEventListener('load', () => {
+// if (typeof triggerConfetti === 'function') {
+// triggerConfetti();
+// }
+// });
