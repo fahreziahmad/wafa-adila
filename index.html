@@ -10,6 +10,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
     <style>
+        /* ... (Semua CSS Anda yang sudah ada tetap di sini) ... */
         .hero-bg {
             background-image: url('https://images.unsplash.com/photo-1524706936999-698f1b93c76e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); /* Ganti jika perlu */
             background-size: cover;
@@ -144,7 +145,8 @@
     </header>
 
     <section id="ucapan-interaktif" class="overflow-hidden">
-        <div class="min-h-screen bg-pink-300 flex flex-col items-center justify-center p-6 text-center relative"> <img src="3.jpg" alt="Selamat Ulang Tahun Special" class="w-52 sm:w-64 md:w-72 mb-8 rounded-xl shadow-2xl animate__animated animate__fadeInDown">
+        <div class="min-h-screen bg-pink-300 flex flex-col items-center justify-center p-6 text-center relative">
+            <img src="3.jpg" alt="Selamat Ulang Tahun Special" class="w-52 sm:w-64 md:w-72 mb-8 rounded-xl shadow-2xl animate__animated animate__fadeInDown">
             <div class="absolute bottom-12 md:bottom-16 left-1/2 transform -translate-x-1/2 w-full px-4">
                 <a href="#ucapan-kartu-mulai" class="inline-block bg-white text-pink-600 font-bold py-3 px-8 rounded-full shadow-xl hover:bg-pink-50 transition-colors duration-300 text-md sm:text-lg animate__animated animate__pulse animate__infinite animate__delay-1s">
                     Scroll ke bawah ya! 👇
@@ -184,7 +186,8 @@
                         <br><br>
                         Terima kasih sudah jadi bagian penting di hidup aku.
                         <br>
-                        <strong class="font-cursive text-xl text-pink-600 block mt-3">Love, Nur Wafa Adila</strong> </p>
+                        <strong class="font-cursive text-xl text-pink-600 block mt-3">Love, Nur Wafa Adila</strong>
+                    </p>
                 </div>
             </div>
         </div>
@@ -200,13 +203,13 @@
                     </div>
                 </div>
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-xl">
-                     <img src="image2.jpg" alt="Kenangan 2" class="w-full h-64 object-cover">
+                    <img src="image2.jpg" alt="Kenangan 2" class="w-full h-64 object-cover">
                     <div class="p-4">
                         <p class="text-gray-600 text-sm text-center">Selalu tertawa bersamamu...</p>
                     </div>
                 </div>
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-xl">
-                     <img src="4.jpg" alt="Kenangan 3" class="w-full h-64 object-cover">
+                    <img src="4.jpg" alt="Kenangan 3" class="w-full h-64 object-cover">
                     <div class="p-4">
                         <p class="text-gray-600 text-sm text-center">Petualangan tak terlupakan...</p>
                     </div>
@@ -285,126 +288,10 @@
     </main>
 
     <footer class="bg-pink-700 text-white text-center p-6 mt-12">
-        <p>© <span id="year"></span> Dibuat dengan ❤️ untuk Nur Wafa Adila.</p> </footer>
+        <p>© <span id="year"></span> Dibuat dengan ❤️ untuk Nur Wafa Adila.</p>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
-    <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        const lagu = document.getElementById('laguUlangTahun');
-        const tombolMusik = document.getElementById('tombolPutarMusik');
-        const ikonPlay = document.getElementById('ikonPlay');
-        const ikonPause = document.getElementById('ikonPause');
-        let musikSudahInteraksi = false;
-
-        tombolMusik.addEventListener('click', () => {
-            if (!musikSudahInteraksi) {
-                lagu.play().catch(error => console.error("Audio play failed:", error));
-                musikSudahInteraksi = true;
-            } else if (lagu.paused) {
-                lagu.play().catch(error => console.error("Audio play failed:", error));
-            } else {
-                lagu.pause();
-            }
-        });
-
-        lagu.onplay = () => {
-            ikonPlay.style.display = 'none';
-            ikonPause.style.display = 'block';
-        };
-
-        lagu.onpause = () => {
-            ikonPlay.style.display = 'block';
-            ikonPause.style.display = 'none';
-        };
-        
-        const triggerConfetti = () => {
-            const defaults = {
-                spread: 360,
-                ticks: 70,
-                gravity: 0,
-                decay: 0.95,
-                startVelocity: 25,
-                shapes: ['star', 'circle', 'heart'],
-                colors: ['#FFC0CB', '#FF69B4', '#FF1493', '#DB7093', '#C71585', '#FFFFFF']
-            };
-
-            function shoot() {
-                confetti({ ...defaults, particleCount: 60, scalar: 1.2, shapes: ['star', 'heart'] });
-                confetti({ ...defaults, particleCount: 30, scalar: 0.8, shapes: ['circle'] });
-            }
-            setTimeout(shoot, 0);
-            setTimeout(shoot, 150);
-            setTimeout(shoot, 300);
-        };
-
-        window.addEventListener('load', () => {
-            triggerConfetti();
-        });
-
-        const giftSelectionSection = document.getElementById('gift-selection-section');
-        const revealedGiftSection = document.getElementById('revealed-gift-section');
-        const giftContents = {
-            1: document.getElementById('gift-content-1'),
-            2: document.getElementById('gift-content-2'),
-            3: document.getElementById('gift-content-3'),
-            4: document.getElementById('gift-content-4')
-        };
-        const youtubePlayer3 = document.getElementById('youtube-player-3');
-
-        // PERBAIKAN: Ganti VIDEO_ID_ANDA dengan ID Video YouTube yang ingin Anda gunakan.
-        // Contoh ID Video untuk "Happy Birthday Song": YOcgY2eT7zE
-        const youtubeVideoURLs = {
-             3: "https://www.youtube.com/embed/VIDEO_ID_ANDA" // GANTI VIDEO_ID_ANDA
-        };
-
-
-        function pilihKado(nomorKado) {
-            // Sembunyikan semua konten kado terlebih dahulu
-            for (const key in giftContents) {
-                giftContents[key].style.display = 'none';
-            }
-
-            // Tampilkan konten kado yang dipilih
-            if (giftContents[nomorKado]) {
-                giftContents[nomorKado].style.display = 'block';
-                
-                // Jika kado adalah video YouTube, set src player
-                if (nomorKado === 3 && youtubePlayer3 && youtubeVideoURLs[3]) {
-                    if (youtubeVideoURLs[3].includes("VIDEO_ID_ANDA")) {
-                        // Beri tahu pengguna jika ID video belum diganti
-                        const pInfo = document.createElement('p');
-                        pInfo.textContent = 'Mohon ganti VIDEO_ID_ANDA di kode JavaScript dengan ID video YouTube yang valid.';
-                        pInfo.className = 'text-red-500 text-sm mt-2';
-                        // Hapus pesan lama jika ada
-                        const oldPInfo = giftContents[nomorKado].querySelector('.text-red-500');
-                        if(oldPInfo) oldPInfo.remove();
-                        giftContents[nomorKado].insertBefore(pInfo, youtubePlayer3.nextSibling);
-                         youtubePlayer3.src = ""; // Jangan putar jika ID placeholder
-                    } else {
-                        youtubePlayer3.src = youtubeVideoURLs[3] + "?autoplay=1"; // Tambahkan autoplay=1
-                    }
-                }
-
-                giftSelectionSection.style.display = 'none';
-                revealedGiftSection.style.display = 'block';
-                triggerConfetti(); 
-                window.scrollTo({ top: revealedGiftSection.offsetTop - 20, behavior: 'smooth' });
-            }
-        }
-
-        function kembaliPilihKado() {
-            for (const key in giftContents) {
-                giftContents[key].style.display = 'none';
-            }
-            if (youtubePlayer3) {
-                youtubePlayer3.src = ""; 
-            }
-
-            revealedGiftSection.style.display = 'none'; 
-            giftSelectionSection.style.display = 'block'; 
-            window.scrollTo({ top: giftSelectionSection.offsetTop - 20, behavior: 'smooth' }); 
-        }
-    </script>
-</body>
+    <script src="script.js" defer></script> 
+    </body>
 </html>
