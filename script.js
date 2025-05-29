@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => { // Ensure DOM is ready bef
     // PENTING: GANTI 'VIDEO_ID_ANDA' dengan ID Video YouTube yang valid.
     // Contoh: Jika URL video adalah https://www.youtube.com/watch?v=XYZ123, maka ID videonya adalah 'XYZ123'.
     const youtubeVideoURLs = {
-         3: "https://www.youtube.com/embed/VIDEO_ID_ANDA" // << GANTI VIDEO_ID_ANDA DI SINI
+         3: "https://www.youtube.com/watch?v=N1Ptcce0SlY&list=RDN1Ptcce0SlY&start_radio=1" // << GANTI VIDEO_ID_ANDA DI SINI
     };
 
 
