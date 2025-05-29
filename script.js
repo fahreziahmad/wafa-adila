@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => { // Ensure DOM is ready bef
     const youtubePlayer3 = document.getElementById('youtube-player-3');
 
     // PENTING: GANTI 'VIDEO_ID_ANDA' dengan ID Video YouTube yang valid.
-    // Contoh: Jika URL video adalah https://www.youtube.com/watch?v=XYZ123, maka ID videonya adalah 'XYZ123'.
+    // Contoh: Jika URL video adalah https://youtu.be/JENpTmMQBQY?si=C256AbiZ2Dku6G8W, maka ID videonya adalah 'XYZ123'.
     const youtubeVideoURLs = {
          3: "https://youtu.be/JENpTmMQBQY?si=C256AbiZ2Dku6G8W" // << GANTI VIDEO_ID_ANDA DI SINI
     };
