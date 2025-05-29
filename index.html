@@ -11,7 +11,7 @@
     />
     <style>
         .hero-bg {
-            background-image: url('https://images.unsplash.com/photo-1524706936999-698f1b93c76e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-image: url('https://images.unsplash.com/photo-1524706936999-698f1b93c76e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); /* Ganti jika perlu */
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -65,7 +65,7 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
         .gift-box img {
-            width: 80px;
+            width: 80px; /* Ukuran ikon kado */
             margin-bottom: 0.75rem; /* mb-3 */
             margin-left: auto;
             margin-right: auto;
@@ -77,20 +77,30 @@
             text-align: center;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             margin-top: 2rem; /* mt-8 */
-            animation: fadeInUp 0.5s ease-out; /* Menggunakan animasi yang sama */
+            animation: fadeInUp 0.5s ease-out; /* Menggunakan animasi kustom */
+        }
+        @keyframes fadeInUp { /* Animasi kustom jika diperlukan, Animate.css juga punya fadeInUpx */
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         .revealed-gift-card img.content-image {
             max-width: 100%;
             height: auto;
-            max-height: 300px; /* Batasi tinggi gambar agar tidak terlalu besar */
+            max-height: 300px;
             border-radius: 0.5rem; /* rounded-lg */
             margin: 1rem auto; /* my-4 */
             display: block;
         }
         .revealed-gift-card iframe {
             width: 100%;
-            max-width: 560px; /* Standard YouTube embed width */
-            height: 315px; /* Standard YouTube embed height */
+            max-width: 560px;
+            height: 315px;
             margin: 1rem auto; /* my-4 */
             border-radius: 0.5rem;
             border: none;
@@ -130,13 +140,11 @@
     <header class="hero-bg shadow-lg relative">
         <div class="container mx-auto px-6 py-20 md:py-32 text-center bg-black bg-opacity-60 rounded-b-lg">
             <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 font-cursive animate__animated animate__tada animate__delay-1s">Selamat Ulang Tahun, Cintaku!</h1>
-            <p class="text-xl md:text-2xl text-pink-200 mb-8 animate__animated animate__fadeInUp animate__delay-2s">Untuk [Nama Pacar Kamu] yang paling spesial.</p>
-        </div>
+            <p class="text-xl md:text-2xl text-pink-200 mb-8 animate__animated animate__fadeInUp animate__delay-2s">Untuk [Nama Pacar Kamu] yang paling spesial.</p> </div>
     </header>
 
     <section id="ucapan-interaktif" class="overflow-hidden">
-        <div class="min-h-screen bg-pink-600 flex flex-col items-center justify-center p-6 text-center relative">
-            <img src="3.jpg" alt="Selamat Ulang Tahun Special" class="w-52 sm:w-64 md:w-72 mb-8 rounded-xl shadow-2xl animate__animated animate__fadeInDown">
+        <div class="min-h-screen bg-pink-300 flex flex-col items-center justify-center p-6 text-center relative"> <img src="3.jpg" alt="Selamat Ulang Tahun Special" class="w-52 sm:w-64 md:w-72 mb-8 rounded-xl shadow-2xl animate__animated animate__fadeInDown">
             <div class="absolute bottom-12 md:bottom-16 left-1/2 transform -translate-x-1/2 w-full px-4">
                 <a href="#ucapan-kartu-mulai" class="inline-block bg-white text-pink-600 font-bold py-3 px-8 rounded-full shadow-xl hover:bg-pink-50 transition-colors duration-300 text-md sm:text-lg animate__animated animate__pulse animate__infinite animate__delay-1s">
                     Scroll ke bawah ya! 👇
@@ -146,7 +154,7 @@
 
         <div id="ucapan-kartu-mulai" class="pt-1"></div>
 
-        <div class="bg-gray-100 py-12 px-4 md:px-6" style="/* background-image: url('URL_BACKGROUND_KARTU_ANDA'); background-size: cover; */">
+        <div class="bg-gray-100 py-12 px-4 md:px-6">
             <div class="max-w-md mx-auto space-y-5 sm:space-y-6">
                 <div class="bg-white p-5 sm:p-6 rounded-xl shadow-lg border-2 border-purple-400 text-center transform transition duration-500 hover:scale-105 animate__animated animate__fadeInUp">
                     <p class="text-lg sm:text-xl font-semibold text-purple-700">Hai Kamu ❤️</p>
@@ -176,8 +184,7 @@
                         <br><br>
                         Terima kasih sudah jadi bagian penting di hidup aku.
                         <br>
-                        <strong class="font-cursive text-xl text-pink-600 block mt-3">Love, Nur Wafa Adila</strong>
-                    </p>
+                        <strong class="font-cursive text-xl text-pink-600 block mt-3">Love, Nur Wafa Adila</strong> </p>
                 </div>
             </div>
         </div>
@@ -193,13 +200,13 @@
                     </div>
                 </div>
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-xl">
-                    <img src="image2.jpg" alt="Kenangan 2" class="w-full h-64 object-cover">
+                     <img src="image2.jpg" alt="Kenangan 2" class="w-full h-64 object-cover">
                     <div class="p-4">
                         <p class="text-gray-600 text-sm text-center">Selalu tertawa bersamamu...</p>
                     </div>
                 </div>
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-xl">
-                    <img src="4.jpg" alt="Kenangan 3" class="w-full h-64 object-cover">
+                     <img src="4.jpg" alt="Kenangan 3" class="w-full h-64 object-cover">
                     <div class="p-4">
                         <p class="text-gray-600 text-sm text-center">Petualangan tak terlupakan...</p>
                     </div>
@@ -209,22 +216,22 @@
 
         <section id="gift-selection-section" class="my-12 animate__animated animate__fadeInUp animate__delay-2s">
             <h3 class="text-2xl md:text-3xl font-semibold text-gray-700 mb-6 text-center">Aku punya sesuatu buat kamu</h3>
-            <p class="text-lg text-gray-500 mb-10 text-center">Pilih salah satu ya >&lt;</p>
+            <p class="text-lg text-gray-500 mb-10 text-center">Pilih salah satu ya ><</p>
             <div class="max-w-2xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 px-4">
                 <div class="gift-box" onclick="pilihKado(1)">
-                    <img src="https://i.ibb.co/Rhp7G0V/gift-icon-1.png" alt="Kado 1">
+                    <img src="https://i.ibb.co/Rhp7G0V/gift-icon-1.png" alt="Kado Pilihan 1">
                     <span class="text-lg font-semibold text-pink-600">1</span>
                 </div>
                 <div class="gift-box" onclick="pilihKado(2)">
-                    <img src="https://i.ibb.co/Rhp7G0V/gift-icon-1.png" alt="Kado 2">
+                    <img src="https://i.ibb.co/Rhp7G0V/gift-icon-1.png" alt="Kado Pilihan 2">
                     <span class="text-lg font-semibold text-pink-600">2</span>
                 </div>
                 <div class="gift-box" onclick="pilihKado(3)">
-                    <img src="https://i.ibb.co/Rhp7G0V/gift-icon-1.png" alt="Kado 3">
+                    <img src="https://i.ibb.co/Rhp7G0V/gift-icon-1.png" alt="Kado Pilihan 3">
                     <span class="text-lg font-semibold text-pink-600">3</span>
                 </div>
                 <div class="gift-box" onclick="pilihKado(4)">
-                    <img src="https://i.ibb.co/Rhp7G0V/gift-icon-1.png" alt="Kado 4">
+                    <img src="https://i.ibb.co/Rhp7G0V/gift-icon-1.png" alt="Kado Pilihan 4">
                     <span class="text-lg font-semibold text-pink-600">4</span>
                 </div>
             </div>
@@ -271,16 +278,14 @@
         </section>
         <section class="text-center bg-white shadow-xl rounded-lg p-8 md:p-12 transform transition duration-500 hover:scale-105 animate__animated animate__fadeInUp animate__delay-3s">
             <h2 class="text-2xl md:text-3xl font-semibold text-pink-600 mb-4">Dengan Segenap Cinta,</h2>
-            <p class="text-xl text-gray-700">[Nur Wafa Adila]</p>
-            <div class="mt-6">
+            <p class="text-xl text-gray-700">[Nur Wafa Adila]</p> <div class="mt-6">
                 <svg class="w-12 h-12 text-pink-500 mx-auto animate-bounce" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path></svg>
             </div>
         </section>
     </main>
 
     <footer class="bg-pink-700 text-white text-center p-6 mt-12">
-        <p>&copy; <span id="year"></span> Dibuat dengan ❤️ untuk Nur Wafa Adila.</p>
-    </footer>
+        <p>© <span id="year"></span> Dibuat dengan ❤️ untuk Nur Wafa Adila.</p> </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
     <script>
@@ -347,12 +352,10 @@
         };
         const youtubePlayer3 = document.getElementById('youtube-player-3');
 
-        // URL Video YouTube (Ganti ID video jika perlu)
-        // Video Cocomelon: http://www.youtube.com/watch?v=ho08YLYDM88 -> ID nya adalah '1', tapi kita butuh ID video asli.
-        // Karena saya tidak bisa mendapatkan ID video asli dari URL googleusercontent, saya akan menggunakan ID video dari hasil search sebelumnya yaitu 'M3B00H9K64s' (CoComelon) atau Anda bisa menggantinya.
-        // URL embed YouTube: https://www.youtube.com/embed/VIDEO_ID
+        // PERBAIKAN: Ganti VIDEO_ID_ANDA dengan ID Video YouTube yang ingin Anda gunakan.
+        // Contoh ID Video untuk "Happy Birthday Song": YOcgY2eT7zE
         const youtubeVideoURLs = {
-             3: "https://www.youtube.com/embed/M3B00H9K64s" // Contoh: CoComelon - Happy Birthday Song
+             3: "https://www.youtube.com/embed/VIDEO_ID_ANDA" // GANTI VIDEO_ID_ANDA
         };
 
 
@@ -368,29 +371,39 @@
                 
                 // Jika kado adalah video YouTube, set src player
                 if (nomorKado === 3 && youtubePlayer3 && youtubeVideoURLs[3]) {
-                    youtubePlayer3.src = youtubeVideoURLs[3];
+                    if (youtubeVideoURLs[3].includes("VIDEO_ID_ANDA")) {
+                        // Beri tahu pengguna jika ID video belum diganti
+                        const pInfo = document.createElement('p');
+                        pInfo.textContent = 'Mohon ganti VIDEO_ID_ANDA di kode JavaScript dengan ID video YouTube yang valid.';
+                        pInfo.className = 'text-red-500 text-sm mt-2';
+                        // Hapus pesan lama jika ada
+                        const oldPInfo = giftContents[nomorKado].querySelector('.text-red-500');
+                        if(oldPInfo) oldPInfo.remove();
+                        giftContents[nomorKado].insertBefore(pInfo, youtubePlayer3.nextSibling);
+                         youtubePlayer3.src = ""; // Jangan putar jika ID placeholder
+                    } else {
+                        youtubePlayer3.src = youtubeVideoURLs[3] + "?autoplay=1"; // Tambahkan autoplay=1
+                    }
                 }
 
-                giftSelectionSection.style.display = 'none'; // Sembunyikan pilihan kado
-                revealedGiftSection.style.display = 'block'; // Tampilkan bagian konten kado
-                triggerConfetti(); // Tampilkan confetti saat kado dibuka
-                window.scrollTo({ top: revealedGiftSection.offsetTop - 20, behavior: 'smooth' }); // Scroll ke konten kado
+                giftSelectionSection.style.display = 'none';
+                revealedGiftSection.style.display = 'block';
+                triggerConfetti(); 
+                window.scrollTo({ top: revealedGiftSection.offsetTop - 20, behavior: 'smooth' });
             }
         }
 
         function kembaliPilihKado() {
-            // Sembunyikan semua konten kado
             for (const key in giftContents) {
                 giftContents[key].style.display = 'none';
             }
-             // Hentikan pemutaran video YouTube jika ada
             if (youtubePlayer3) {
-                youtubePlayer3.src = ""; // Mengosongkan src akan menghentikan video
+                youtubePlayer3.src = ""; 
             }
 
-            revealedGiftSection.style.display = 'none'; // Sembunyikan bagian konten kado
-            giftSelectionSection.style.display = 'block'; // Tampilkan kembali pilihan kado
-            window.scrollTo({ top: giftSelectionSection.offsetTop - 20, behavior: 'smooth' }); // Scroll kembali ke pilihan kado
+            revealedGiftSection.style.display = 'none'; 
+            giftSelectionSection.style.display = 'block'; 
+            window.scrollTo({ top: giftSelectionSection.offsetTop - 20, behavior: 'smooth' }); 
         }
     </script>
 </body>
