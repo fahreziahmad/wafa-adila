@@ -1,4 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => { // Ensure DOM is ready before running script
+// Salin dan ganti seluruh isi script.js Anda dengan kode ini
+document.addEventListener('DOMContentLoaded', () => { 
 
     const yearElement = document.getElementById('year');
     if (yearElement) {
@@ -11,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => { // Ensure DOM is ready bef
     const ikonPause = document.getElementById('ikonPause');
     let musikSudahInteraksi = false;
 
-    if (tombolMusik && lagu && ikonPlay && ikonPause) { // Check if all music elements exist
+    if (tombolMusik && lagu && ikonPlay && ikonPause) {
         tombolMusik.addEventListener('click', () => {
             if (!musikSudahInteraksi) {
                 lagu.play().catch(error => console.error("Audio play failed:", error));
@@ -22,32 +23,13 @@ document.addEventListener('DOMContentLoaded', () => { // Ensure DOM is ready bef
                 lagu.pause();
             }
         });
-
-        lagu.onplay = () => {
-            ikonPlay.style.display = 'none';
-            ikonPause.style.display = 'block';
-        };
-
-        lagu.onpause = () => {
-            ikonPlay.style.display = 'block';
-            ikonPause.style.display = 'none';
-        };
-    } else {
-        console.warn("Music player elements not found.");
+        lagu.onplay = () => { ikonPlay.style.display = 'none'; ikonPause.style.display = 'block'; };
+        lagu.onpause = () => { ikonPlay.style.display = 'block'; ikonPause.style.display = 'none'; };
     }
     
     const triggerConfetti = () => {
-        if (typeof confetti === 'function') { // Check if confetti function is available
-            const defaults = {
-                spread: 360,
-                ticks: 70,
-                gravity: 0,
-                decay: 0.95,
-                startVelocity: 25,
-                shapes: ['star', 'circle', 'heart'],
-                colors: ['#FFC0CB', '#FF69B4', '#FF1493', '#DB7093', '#C71585', '#FFFFFF']
-            };
-
+        if (typeof confetti === 'function') {
+            const defaults = { spread: 360, ticks: 70, gravity: 0, decay: 0.95, startVelocity: 25, shapes: ['star', 'circle', 'heart'], colors: ['#FFC0CB', '#FF69B4', '#FF1493', '#DB7093', '#C71585', '#FFFFFF'] };
             function shoot() {
                 confetti({ ...defaults, particleCount: 60, scalar: 1.2, shapes: ['star', 'heart'] });
                 confetti({ ...defaults, particleCount: 30, scalar: 0.8, shapes: ['circle'] });
@@ -55,14 +37,10 @@ document.addEventListener('DOMContentLoaded', () => { // Ensure DOM is ready bef
             setTimeout(shoot, 0);
             setTimeout(shoot, 150);
             setTimeout(shoot, 300);
-        } else {
-            console.warn("Confetti function is not defined. Make sure the confetti script is loaded before this script or is globally available.");
         }
     };
 
-    // Call confetti on initial load (after DOM is ready)
     triggerConfetti();
-
 
     const giftSelectionSection = document.getElementById('gift-selection-section');
     const revealedGiftSection = document.getElementById('revealed-gift-section');
@@ -74,51 +52,55 @@ document.addEventListener('DOMContentLoaded', () => { // Ensure DOM is ready bef
     };
     const youtubePlayer3 = document.getElementById('youtube-player-3');
 
-    // --- PERUBAHAN DI SINI ---
-    // Ganti 'VIDEO_ID_ANDA' dengan ID Video YouTube yang valid.
-    // Contoh: "https://www.youtube.com/embed/M3B00H9K64s"
+    // =======================================================================
+    // VVVV         SAYA SUDAH MENGGANTINYA DENGAN LINK TES         VVVV
+    // =======================================================================
     const youtubeVideoURLs = {
-         3: "https://youtu.be/mAJa4SF_VVI?si=d_/embed/WgbEJ90Rr0B9vQ" // << GANTI VIDEO_ID_ANDA DI SINI
+         3: "https://www.youtube.com/watch?v=cO1KJLw0014" // INI ADALAH LINK TES YANG PASTI BISA
     };
-    // Pastikan Anda mengganti VIDEO_ID_ANDA di atas dengan ID video YouTube yang sebenarnya.
-    // Misalnya: const youtubeVideoURLs = { 3: "https://www.youtube.com/embed/M3B00H9K64s" };
+    // =======================================================================
 
-
-    // Make functions global so they can be called from HTML onclick attributes
-    window.pilihKado = function(nomorKado) {
-        // Hide all gift contents first
-        for (const key in giftContents) {
-            if (giftContents[key]) {
-                giftContents[key].style.display = 'none';
+    /**
+     * Fungsi ini JANGAN DIUBAH. Fungsi ini sudah benar.
+     */
+    function getYouTubeEmbedUrl(url) {
+        let videoId = null;
+        try {
+            const urlObj = new URL(url);
+            if (urlObj.hostname === "youtu.be") {
+                videoId = urlObj.pathname.slice(1);
+            } else if (urlObj.hostname.includes("youtube.com")) {
+                videoId = urlObj.searchParams.get("v");
             }
+        } catch (e) { return null; }
+        
+        if (videoId) {
+            return `https://www.youtube.com/embed/${videoId}`;
         }
+        return null;
+    }
 
-        // Show the selected gift content
+    // Bagian di bawah ini JANGAN DIUBAH. Semuanya sudah otomatis.
+    window.pilihKado = function(nomorKado) {
+        for (const key in giftContents) {
+            if (giftContents[key]) giftContents[key].style.display = 'none';
+        }
         if (giftContents[nomorKado]) {
             giftContents[nomorKado].style.display = 'block';
-            
-            // If the gift is a YouTube video, set the player source
             if (nomorKado === 3 && youtubePlayer3 && youtubeVideoURLs[3]) {
-                // Cek apakah URL masih placeholder
-                if (youtubeVideoURLs[3].includes("VIDEO_ID_ANDA") || !youtubeVideoURLs[3].includes("youtube.com/embed/")) {
-                    const pInfo = document.createElement('p');
-                    pInfo.textContent = 'PENTING: Mohon ganti VIDEO_ID_ANDA di file script.js dengan ID video YouTube yang valid (gunakan format https://www.youtube.com/embed/ID_VIDEO) agar video bisa diputar.';
-                    pInfo.className = 'text-red-500 text-sm mt-2 font-semibold';
-                    
-                    const oldPInfo = giftContents[nomorKado].querySelector('.text-red-500');
-                    if(oldPInfo) oldPInfo.remove(); 
-                    
-                    giftContents[nomorKado].insertBefore(pInfo, youtubePlayer3.nextSibling);
-                    youtubePlayer3.src = ""; // Jangan putar jika ID placeholder
+                const embedUrl = getYouTubeEmbedUrl(youtubeVideoURLs[3]);
+                const oldPInfo = giftContents[nomorKado].querySelector('.text-red-500');
+                if(oldPInfo) oldPInfo.remove();
+                if (embedUrl) {
+                    youtubePlayer3.src = embedUrl + "?autoplay=1&rel=0&modestbranding=1";
                 } else {
-                    // Hapus pesan peringatan jika ada
-                    const oldPInfo = giftContents[nomorKado].querySelector('.text-red-500');
-                    if(oldPInfo) oldPInfo.remove();
-                    // Set src dengan autoplay dan parameter lainnya
-                    youtubePlayer3.src = youtubeVideoURLs[3] + "?autoplay=1&rel=0&modestbranding=1"; 
+                    const pInfo = document.createElement('p');
+                    pInfo.textContent = 'Link YouTube tidak valid. Cek kembali link di bagian atas script.js.';
+                    pInfo.className = 'text-red-500 text-sm mt-2 font-semibold';
+                    giftContents[nomorKado].insertBefore(pInfo, youtubePlayer3.nextSibling);
+                    youtubePlayer3.src = "";
                 }
             }
-
             if (giftSelectionSection) giftSelectionSection.style.display = 'none'; 
             if (revealedGiftSection) revealedGiftSection.style.display = 'block'; 
             triggerConfetti(); 
@@ -128,17 +110,13 @@ document.addEventListener('DOMContentLoaded', () => { // Ensure DOM is ready bef
 
     window.kembaliPilihKado = function() {
         for (const key in giftContents) {
-            if (giftContents[key]) {
-                giftContents[key].style.display = 'none';
-            }
+            if (giftContents[key]) giftContents[key].style.display = 'none';
         }
         if (youtubePlayer3) {
-            youtubePlayer3.src = ""; // Hentikan video YouTube dengan mengosongkan src
+            youtubePlayer3.src = "";
         }
-
         if (revealedGiftSection) revealedGiftSection.style.display = 'none'; 
         if (giftSelectionSection) giftSelectionSection.style.display = 'block'; 
         if (giftSelectionSection) window.scrollTo({ top: giftSelectionSection.offsetTop - 20, behavior: 'smooth' }); 
     }
-
-}); // End of DOMContentLoaded listener
+});
